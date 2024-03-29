@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.tpp.hpp                                   :+:      :+:    :+:   */
+/*   easyfind.tpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gbrunet <gbrunet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 13:01:00 by gbrunet           #+#    #+#             */
-/*   Updated: 2024/03/29 13:13:03 by gbrunet          ###   ########.fr       */
+/*   Updated: 2024/03/29 16:44:25 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@
 # include <algorithm>
 
 template<typename T>
-void	easyfind(T container, int needle) {
-	if (std::find(container.begin(), container.end(), needle) != container.end())
-		std::cout << "Integer found" << std::endl;
-	else
-		std::cout << "Integer not found !" << std::endl;
+int	*easyfind(T &container, int needle) {
+	typename T::iterator it = container.begin();
+
+	it = std::find(container.begin(), container.end(), needle);
+	if (it != container.end())
+		return (&(*it));
+	else throw std::exception();
 }
 
 #endif
