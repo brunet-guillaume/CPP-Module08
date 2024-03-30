@@ -6,7 +6,7 @@
 /*   By: gbrunet <gbrunet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:20:01 by gbrunet           #+#    #+#             */
-/*   Updated: 2024/03/29 17:56:54 by gbrunet          ###   ########.fr       */
+/*   Updated: 2024/03/30 10:09:08 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ int	main(void) {
 	help_msg("Searching 2 in deque container...");
 	try {
 		finded_int = ::easyfind(deq, 2);
+		warning_msg("Adding 10 to the found integer and printing the container ints");
+		*finded_int += 10;
+		std::for_each(vec.begin(), vec.end(), print);
+		std::cout << std::endl;
 	} catch (std::exception &e) {
 		std::cerr << RED << "Container does not contains this integer" << std::endl;
 	}
@@ -63,6 +67,7 @@ int	main(void) {
 		warning_msg("Adding 10 to the found integer and printing the container ints");
 		*finded_int += 10;
 		std::for_each(lis.begin(), lis.end(), print);
+		std::cout << std::endl;
 	} catch (std::exception &e) {
 		std::cerr << RED << "Container does not contains this integer" << std::endl;
 	}

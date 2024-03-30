@@ -6,7 +6,7 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 04:48:24 by gbrunet           #+#    #+#             */
-/*   Updated: 2024/03/30 07:18:45 by gbrunet          ###   ########.fr       */
+/*   Updated: 2024/03/30 10:07:09 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,13 @@ unsigned int	Span::shortestSpan() {
 	std::vector<int> sorted(this->_vector);
 	std::sort(sorted.begin(), sorted.end());
 	shortest = *(sorted.begin() + 1) - sorted.front();
+	if (shortest == 0)
+		return (0);
 	for (InputIt it = (sorted.begin() + 1); it != sorted.end() - 1; it++) {
 		if(static_cast<unsigned long>(*(it + 1) - *it) < shortest) {
 			shortest = *(it + 1) - *it;
+			if (shortest == 0)
+				return (0);
 		}
 	}
 	return (shortest);
