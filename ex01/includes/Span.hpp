@@ -6,7 +6,7 @@
 /*   By: gbrunet <gbrunet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 17:58:01 by gbrunet           #+#    #+#             */
-/*   Updated: 2024/03/29 18:19:04 by gbrunet          ###   ########.fr       */
+/*   Updated: 2024/03/30 06:18:52 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 # define SPAN_HPP
 
 # include <iterator>
-# include <list>
+# include <vector>
 
 class Span {
 	private:
-		const unsigned int	_maxItem;
+		typedef std::vector<int>::iterator InputIt;
+
+		unsigned int		_maxItem;
 		unsigned int		_count;
-		std::list<int>		_list;
+		std::vector<int>	_vector;
 	
 		Span();
 
@@ -31,10 +33,12 @@ class Span {
 
 		Span	&operator=(const Span &rhs);
 
-		void	addNumber(const int nb);
-		int		shortestSpan();
-		int		longestSpan();
-		void	addRange(/*TODO*/);
+		void			addNumber(const int nb);
+		unsigned int	shortestSpan();
+		unsigned int	longestSpan();
+		void			addRange(InputIt start, InputIt end);
+		unsigned int	getCount() const;
+		int				getItem(int i) const;
 		
 		class EmptySpanException : public std::exception {
 			const char*	what() const throw();
@@ -42,6 +46,14 @@ class Span {
 		class OnlyOneException : public std::exception {
 			const char*	what() const throw();
 		};
+		class FullSpanException : public std::exception {
+			const char*	what() const throw();
+		};
+		class RangeTooLargeException : public std::exception {
+			const char*	what() const throw();
+		};
 };
+
+std::ostream	&operator<<(std::ostream &o, const Span &span);
 
 #endif
