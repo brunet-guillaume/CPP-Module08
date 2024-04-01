@@ -6,7 +6,7 @@
 /*   By: gbrunet <gbrunet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:20:01 by gbrunet           #+#    #+#             */
-/*   Updated: 2024/03/30 07:16:09 by gbrunet          ###   ########.fr       */
+/*   Updated: 2024/04/01 09:48:51 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	rdm_vector(std::vector<int> &v, long min, long max) {
 
 int	main(void) {
 	std::vector<int>	rdm1(100);
-	std::vector<int>	rdm2(1000000);
+	std::vector<int>	rdm2(10000);
 
 	std::srand(time(NULL) * getpid());
 	rdm_vector(rdm1, 0, 500);
@@ -142,12 +142,12 @@ int	main(void) {
 
 	std::cout << std::endl;
 	help_msg("Initializing a Span with size 100000");
-	Span	span2(1000000);
+	Span	span2(10000);
 	
 	std::cout << std::endl;
-	help_msg("Trying to add a range of 1000000 ints to the Span");
+	help_msg("Trying to add a range of 10000 ints to the Span");
 	try {
-		span2.addRange(rdm2.begin(), rdm2.begin() + 1000000);
+		span2.addRange(rdm2.begin(), rdm2.begin() + 10000);
 		std::cout << "Range added" << std::endl;
 	} catch (std::exception &e) {
 		std::cerr << RED << e.what() << END_STYLE << std::endl;
